@@ -1,6 +1,7 @@
 package _01_MurderOfCrows;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 public class MurderOfCrows {
@@ -17,9 +18,15 @@ public class MurderOfCrows {
         // 1. One of the Crows has eaten the diamond. You need to search
         //    through the stomach of each Crow, then print the name of the
         //    guilty Crow.
-
+    	int innocent = 0;
+    	for (int i = 0; i < theMurder.size(); i++) {
+			if (theMurder.get(i).getStomachContents().contains("diamond")) {
+				System.out.println("The guilty crow is " +theMurder.get(i).getName());
+				innocent = i;
+			}
+		}
         // 2. How many innocent crows had to die before the diamond was found?
-
+    	System.out.println(innocent+ " crows had to die before the diamond was found.");
     }
 
     private void initializeCrows() {

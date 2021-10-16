@@ -15,7 +15,7 @@ public class LongChipCompetition {
 
     public static void main(String[] args) {
         LongChipCompetition lcc = new LongChipCompetition();
-
+        int longestchip;
     }
 
     private void initializeBeatles() {
