@@ -29,13 +29,14 @@ public class _02_LogSearch implements ActionListener {
 		panel.add(button2);
 		panel.add(button3);
 		frame.setVisible(true);
-		frame.pack();
 		button1.setText("Add");
 		button2.setText("Search");
 		button3.setText("View");
 		button1.addActionListener(this);
 		button2.addActionListener(this);
 		button3.addActionListener(this);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
 	}
 	/*
 	 * Crate a HashMap of Integers for the keys and Strings for the values. Create a
@@ -67,14 +68,15 @@ public class _02_LogSearch implements ActionListener {
 		if (buttonClicked == button1) {
 			idnum = JOptionPane.showInputDialog("Enter an ID number: ");
 			name = JOptionPane.showInputDialog("Enter your name: ");
+			int idNum = Integer.parseInt(idnum);
+			search.put(idNum, name);
 		}
-		int idNum = Integer.parseInt(idnum);
-		search.put(idNum, name);
-
+		
 		if (buttonClicked == button2) {
 			idnum = JOptionPane.showInputDialog("Enter an ID number: ");
-			if (search.containsKey(idnum)) {
-				JOptionPane.showMessageDialog(null, search.get(name));
+			int idNum = Integer.parseInt(idnum);
+			if (search.containsKey(idNum)) {
+				JOptionPane.showMessageDialog(null, search.get(idNum));
 			} else {
 				JOptionPane.showMessageDialog(null, "This entry does not exist.");
 			}
@@ -83,10 +85,11 @@ public class _02_LogSearch implements ActionListener {
 		if (buttonClicked == button3) {
 			String s = "";
 			for(Integer i : search.keySet()) {
-				s = "ID: " + i + " Name: " + search.get(i) + "\n";
+				s += "ID: " + i + " Name: " + search.get(i) + "\n";
 			}
 			JOptionPane.showMessageDialog(null, s);
 		}
+		
 	}
 
 }

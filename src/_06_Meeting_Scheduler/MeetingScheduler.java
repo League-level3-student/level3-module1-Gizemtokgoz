@@ -1,5 +1,7 @@
 package _06_Meeting_Scheduler;
 
+import javax.swing.JOptionPane;
+
 public class MeetingScheduler {
     /*
      * Your task is to code a method to find a meeting time for two people
@@ -22,7 +24,13 @@ public class MeetingScheduler {
      * Assume both schedules are in the same time zones
      */
     public static Schedule getMutualAvailability(Schedule person1, Schedule person2) {
-        
+    	for (String i : person1.getSchedule().keySet()) {
+			for (String j : person2.getSchedule().keySet()) {
+				if (getSchedule.containsKey(i) && getSchedule.containsKey(j)) {
+					weeklyAvailability.addAvailability(person1.getSchedule(i), person2.getSchedule(j));
+				}
+			}
+		}
         return null;
     }
 }
