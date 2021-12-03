@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /*
@@ -34,24 +36,39 @@ import javax.swing.JOptionPane;
 public class CaliforniaWeather {
 
 	void start() {
-        HashMap<String, WeatherData> weatherData = Utilities.getWeatherData();
-        
-        String cityName = JOptionPane.showInputDialog("Enter a city in San Diego: ");
-        WeatherData datum = weatherData.get(cityName);
-        HashMap<String, ArrayList<String>> weather = weather.get(cityName);
-		HashMap<String, ArrayList<Integer>> temp = person2.getSchedule();
-        String wCondition = JOptionPane.showInputDialog("Specify your weather conditions: ");
-        for () {
-        	if (weatherData.containsValue(wCondition)) {
-        		
-    		}
+		JFrame frame = new JFrame();
+		JLabel label = new JLabel("fix");
+		frame.setVisible(true);
+		frame.add(label);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		HashMap<String, WeatherData> weatherData = Utilities.getWeatherData();
+		ArrayList<String> compaC = new ArrayList();
+
+		// String cityName = JOptionPane.showInputDialog("Enter a city in San Diego: ");
+		// WeatherData datum = weatherData.get(cityName);
+		// Double temperature = datum.temperatureF;
+		String wCondition = JOptionPane.showInputDialog("Specify your weather conditions: ");
+		for (String city : weatherData.keySet()) {
+			WeatherData datum2 = weatherData.get(city);
+			System.out.println(datum2.weatherSummary + wCondition);
+			if (datum2.weatherSummary.equalsIgnoreCase(wCondition)) {
+				compaC.add(city);
+			}
 		}
-        
-        // All city keys have the first letter capitalized of each word 
-        if( datum == null ) {
-            System.out.println("Unable to find weather data for: " + cityName);
-        } else {
-            System.out.println(cityName + " is " + datum.weatherSummary + " with a temperature of " + datum.temperatureF + " F");
-        }
-    }
+		String cities = "";
+		
+		for (String city : compaC) {
+			cities += city + "\n";
+		}
+		label.setText(cities);
+
+		// All city keys have the first letter capitalized of each word
+		/*
+		 * if (datum == null) { System.out.println("Unable to find weather data for: " +
+		 * cityName); } else { System.out.println( cityName + " is " +
+		 * datum.weatherSummary + " with a temperature of " + datum.temperatureF +
+		 * " F"); }
+		 */
+	}
 }
